@@ -14,4 +14,10 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+<style name="CustomListView" parent="@android:style/Widget.ListView">
+    <item name="android:background">#bcc6e1</item>
+    <item name="android:fastScrollEnabled">true</item>
+</style>
+
 </resources>

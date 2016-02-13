@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp">
-<TextView
-    android:layout_width="80dp"
-    android:layout_height="50dp"
-    android:text=""
-    android:id="@+id/for_price"/>
-    <TextView
-        android:layout_width="80dp"
-        android:layout_height="50dp"
-        android:text=""
-        android:id="@+id/for_theatre"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TextView
         android:layout_width="100dp"
+        android:layout_height="50dp" 
+        android:id="@+id/for_time"/>
+    <LinearLayout
+        android:layout_width="200dp"
         android:layout_height="50dp"
-        android:text=""
-        android:id="@+id/for_film"/>
+        android:orientation="vertical">
     <TextView
-        android:layout_width="128dp"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:id="@+id/for_name"/>
+        <TextView
+            android:id="@+id/for_hall"
+            android:layout_width="150dp"
+            android:layout_height="20dp" />
+        
+    </LinearLayout>
+    <TextView
+        android:layout_width="70dp"
         android:layout_height="50dp"
-        android:text=""
-        android:id="@+id/for_date"/>
+        android:id="@+id/for_price"
+        android:textColor="#3f6c35"/>
+    </LinearLayout>
+   
+
 </LinearLayout>

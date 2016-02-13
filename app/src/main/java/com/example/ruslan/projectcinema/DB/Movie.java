@@ -9,18 +9,25 @@ public class Movie implements Serializable {
     private String description;
     private String imageUrl;
     private String trailer;
+    private String movieid;
 
-    public Movie(int id, String title, String description, String imageUrl, String trailer) {
+    public String getMovieid() {
+        return movieid;
+    }
+
+    public Movie(int id, String title, String description, String imageUrl, String trailer,String movieid) {
         _id = id;
         this.title = title;
         this.imageUrl = imageUrl;
         this.description = description;
         this.trailer = trailer;
-    } public Movie(String title, String description, String imageUrl, String trailer) {
+        this.movieid = movieid;
+    } public Movie(String title, String description, String imageUrl, String trailer,String movieid) {
         this.title = title;
         this.imageUrl = imageUrl;
         this.description = description;
         this.trailer = trailer;
+        this.movieid = movieid;
     }
     public String getTitle() {
         return title;

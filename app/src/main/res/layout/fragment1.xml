@@ -5,9 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <include
+        layout="@layout/toolbar_for_timetable">
+    </include>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listview">
+        android:id="@+id/listview"
+        style="@style/CustomListView" >
     </ListView>
 </RelativeLayout>

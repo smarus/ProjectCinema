@@ -25,6 +25,7 @@ public class Manager {
         values.put(DbTimeHelper.COL_THEATRE, timeTable.getTheatre());
         values.put(DbTimeHelper.COL_DATE, timeTable.getDate());
         values.put(DbTimeHelper.COL_PRICE, timeTable.getPrice());
+        values.put(DbTimeHelper.COL_MOVIEID,timeTable.getCodeid());
         long rowID = db.insert(DbTimeHelper.DBNAME, null, values);
         Log.d(LOG_TAG, "row inserted, ID = " + rowID+"timetable");
     }
@@ -41,7 +42,8 @@ public class Manager {
                 String theatre=c.getString(c.getColumnIndex(DbTimeHelper.COL_THEATRE));
                 String date = c.getString(c.getColumnIndex(DbTimeHelper.COL_DATE));
                 String price = c.getString(c.getColumnIndex(DbTimeHelper.COL_PRICE));
-                movieslist1.add(new TimeTable(hall,title, theatre, date,price));
+                String movidid=c.getString(c.getColumnIndex(DbTimeHelper.COL_MOVIEID));
+                movieslist1.add(new TimeTable(hall,title, theatre, date,price,movidid));
 
                 Log.d(LOG_TAG,
                         "ID = " + id +

@@ -21,6 +21,7 @@ public class Manager {
         values.put(DbHelper.COL_DESCRIPTION, movie.getDescription());
         values.put(DbHelper.COL_IMAGE,movie.getImageUrl());
         values.put(DbHelper.COL_TRAILER, movie.getTrailer());
+        values.put(DbHelper.COL_MOVIEID,movie.getMovieid());
         long rowID = db.insert(DbHelper.DBNAME, null, values);
         Log.d(LOG_TAG, "row inserted, ID = " + rowID);
     }
@@ -36,7 +37,8 @@ public class Manager {
                 String description = c.getString(c.getColumnIndex(DbHelper.COL_DESCRIPTION));
                 String image_url=c.getString(c.getColumnIndex(DbHelper.COL_IMAGE));
                 String trailer = c.getString(c.getColumnIndex(DbHelper.COL_TRAILER));
-                movieslist.add(new Movie(id,title, description, image_url, trailer));
+                String movieid = c.getString(c.getColumnIndex(DbHelper.COL_MOVIEID));
+                movieslist.add(new Movie(id,title, description, image_url, trailer,movieid));
 
                 Log.d(LOG_TAG,
                         "ID = " + id +

@@ -16,6 +16,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final  String COL_DESCRIPTION= "description";
     public static final  String COL_IMAGE= "imageurl";
     public static final  String COL_TRAILER = "trailer";
+    public static final  String COL_MOVIEID = "movieid";
     public DbHelper(Context context)
     {
         super(context, Dbname, null, 1);
@@ -33,6 +34,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 COL_NAME + " TEXT," +
                 COL_DESCRIPTION + " TEXT," +
                 COL_IMAGE + " TEXT," +
+                COL_MOVIEID + " TEXT," +
                 COL_TRAILER + " TEXT);";
         db.execSQL(sql);
     }

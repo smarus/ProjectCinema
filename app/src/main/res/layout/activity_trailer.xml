@@ -6,6 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="true"
     tools:context="com.example.ruslan.projectcinema.activities.TrailerActivity">
+    <include layout="@layout/toolbar_for_trailer">
+    </include>
     <RelativeLayout
 
         android:layout_width="match_parent"

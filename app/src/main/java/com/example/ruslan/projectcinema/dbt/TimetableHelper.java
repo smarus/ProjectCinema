@@ -9,15 +9,20 @@ public class TimetableHelper {
     private String hall;
     private String theatre;
     private String price;
+    private String coideid;
 
-    public TimetableHelper(String dateTime, String movie, String hall, String theatre, String price) {
+    public TimetableHelper(String dateTime, String movie, String hall, String theatre, String price,String coideid) {
         this.dateTime = dateTime;
         this.movie = movie;
         this.hall = hall;
         this.theatre = theatre;
         this.price = price;
+        this.coideid = coideid;
     }
 
+    public String getCoideid() {
+        return coideid;
+    }
 
     public String getDateTime() {
         return dateTime;

@@ -1,7 +1,11 @@
 package com.example.ruslan.projectcinema;
 
 import android.content.Context;
+
+import com.example.ruslan.projectcinema.activities.LisTimeActivity;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -27,11 +31,11 @@ import com.example.ruslan.projectcinema.DB.DbHelper;
 import com.example.ruslan.projectcinema.DB.Manager;
 import com.example.ruslan.projectcinema.DB.Movie;
 import com.example.ruslan.projectcinema.activities.CinemaActivity;
-
+import com.example.ruslan.projectcinema.dbt.DbTimeHelper;
+import com.example.ruslan.projectcinema.dbt.TimeTable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,26 +50,25 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
     DbHelper dbHelper;
-    LinearLayout up_line,down_line,progress_line;
+    DbTimeHelper dbTimeHelper;
+    LinearLayout up_line, down_line, progress_line;
     Button button;
     ViewPager viewPager;
     Date datefrom = new Date();
-    long dateto = datefrom.getTime()+ TimeUnit.DAYS.toMillis(3);
+    long dateto = datefrom.getTime() + TimeUnit.DAYS.toMillis(3);
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
 
-    String movie="http://cinema.su.kg/api/?token=24dDSFasdoj31adfwedf83213xxsfwed&object=movie&action=list&date_from=2016-01-01%2000:00:00&&date_to=2016-01-21%2000:00:00%22";
-
+    String movie = "http://cinema.su.kg/api/?token=24dDSFasdoj31adfwedf83213xxsfwed&object=movie&action=list&date_from=2016-01-01%2000:00:00&&date_to=2016-01-21%2000:00:00%22";
+    String timetable = "http://cinema.su.kg/api/?token=24dDSFasdoj31adfwedf83213xxsfwed&object=timetable&action=list&date_from=+" + format.format(datefrom) + "%2000:00:00&&date_to=" + format.format(dateto) + "%2000:00:00%22";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.e("DATE", format.format(datefrom));
         dbHelper = new DbHelper(this);
-        long time = System.currentTimeMillis();
-        long msDay = 24 * 60 * 60 * 1000;
-        int days = (int) (time / msDay);
-        button =(Button)findViewById(R.id.btn_cinema);
+        dbTimeHelper = new DbTimeHelper(this);
+        button = (Button) findViewById(R.id.btn_cinema);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,11 +78,26 @@ public class MainActivity extends AppCompatActivity {
         });
         setDisplay();
 
-        if (ConnectInet()) {
-            update();
+        if (ConnectInet() && TimeMIls()) {
+        update();
         } else {
             showWithoutInternet();
         }
+
+    }
+
+
+    private boolean TimeMIls() {
+        SharedPreferences spref = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor pref = spref.edit();
+        long currentTime = System.currentTimeMillis();
+        long previousTime = spref.getLong("time", 0);
+        if (currentTime - previousTime > TimeUnit.DAYS.toMillis(1)) {
+            pref.putLong("time", currentTime);
+            pref.commit();
+            return true;
+        }
+        return false;
 
     }
 
@@ -88,20 +106,20 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo networkinfo = myConnMgr.getActiveNetworkInfo();
         return networkinfo != null && networkinfo.isConnected();
     }
-    public void setDisplay()
-    {
-        up_line = (LinearLayout)findViewById(R.id.up_line);
-        progress_line = (LinearLayout)findViewById(R.id.liner_for_progress);
-        down_line = (LinearLayout)findViewById(R.id.down_line);
-        button = (Button)findViewById(R.id.btn_cinema);
+
+    public void setDisplay() {
+        up_line = (LinearLayout) findViewById(R.id.up_line);
+        progress_line = (LinearLayout) findViewById(R.id.liner_for_progress);
+        down_line = (LinearLayout) findViewById(R.id.down_line);
+        button = (Button) findViewById(R.id.btn_cinema);
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
         int weight = displayMetrics.widthPixels;
         up_line.setLayoutParams(new LinearLayout.LayoutParams(weight, (int) (height * 0.4)));
     }
+
     public void update() {
-        setDisplay();
         new DownloadUrl().execute(movie);
     }
 
@@ -110,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Movie> movies = Manager.read(db);
 
 
-        PagerViewAdapter pagerViewAdapter = new PagerViewAdapter(getApplicationContext(),movies);
+        PagerViewAdapter pagerViewAdapter = new PagerViewAdapter(getApplicationContext(), movies);
         viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setPageTransformer(true, new PageTransformer());
         viewPager.setAdapter(pagerViewAdapter);
@@ -119,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         progress_line.setVisibility(View.INVISIBLE);
     }
 
-    public  class DownloadUrl extends AsyncTask<String, Void, String> {
+    public class DownloadUrl extends AsyncTask<String, Void, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -129,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(String... urls) {
             try {
                 String result = downloadOneUrl(urls[0]);
-                Log.e("Oшибка", result);
+//                Log.e("Oшибка", result);
                 if (result != null)
                     try {
                         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -141,8 +159,28 @@ public class MainActivity extends AppCompatActivity {
                             String description = object.getString("description");
                             String image_url = object.getString("image");
                             String trailer = object.getString("trailer");
-                            Manager.save(db, new Movie(title, description, image_url, trailer));
+                            String movieid = object.getString("codeid");
+                            Manager.save(db, new Movie(title, description, image_url, trailer, movieid));
                         }
+                        String result2 = downloadOneUrl(timetable);
+                        if (result2!=null) {
+                            SQLiteDatabase db2 = dbTimeHelper.getWritableDatabase();
+                            JSONObject jsonObject2 = new JSONObject(result2);
+                            JSONArray jsonArray2 = jsonObject2.getJSONArray("data");
+                            for (int i = 0; i < jsonArray2.length(); i++) {
+                                JSONObject object2 = jsonArray2.getJSONObject(i);
+                                String id = object2.getString("theatre_id");
+                                String theatre_title = object2.getString("theatre_title");
+                                Log.e("TIMETABLE",theatre_title);
+                                String hall_title = object2.getString("hall_title");
+                                String movie_title = object2.getString("movie_title");
+                                String price = object2.getString("price_older");
+                                String date = object2.getString("session_time");
+                                String codeid = object2.getString("movie_id");
+                                com.example.ruslan.projectcinema.dbt.Manager.save(db2, new TimeTable(hall_title, movie_title, theatre_title, date, price, codeid));
+                            }
+                        }
+
                     } catch (JSONException e) {
                         //Toast.makeText(getApplicationContext(),"JsonException",Toast.LENGTH_SHORT).show();
 
@@ -159,14 +197,13 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<Movie> movies = Manager.read(db);
 
 
-            PagerViewAdapter pagerViewAdapter = new PagerViewAdapter(getApplicationContext(),movies);
+            PagerViewAdapter pagerViewAdapter = new PagerViewAdapter(getApplicationContext(), movies);
             viewPager = (ViewPager) findViewById(R.id.pager);
             viewPager.setPageTransformer(true, new PageTransformer());
             viewPager.setAdapter(pagerViewAdapter);
             up_line.setVisibility(View.VISIBLE);
             down_line.setVisibility(View.VISIBLE);
             progress_line.setVisibility(View.INVISIBLE);
-
 
 
         }

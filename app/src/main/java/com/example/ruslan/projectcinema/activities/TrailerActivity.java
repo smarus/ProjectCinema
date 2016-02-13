@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.ruslan.projectcinema.DB.Movie;
 import com.example.ruslan.projectcinema.R;
+import com.romainpiel.shimmer.Shimmer;
+import com.romainpiel.shimmer.ShimmerTextView;
 import com.squareup.picasso.Picasso;
 
 import io.vov.vitamio.LibsChecker;
@@ -24,39 +26,40 @@ import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 
 public class TrailerActivity extends AppCompatActivity {
-        TextView description;
-        ImageView afisha;
-        VideoView video;
+    TextView description;
+    ImageView afisha;
+    VideoView video;
     String pathUrl;
     ImageButton button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trailer);
         Intent intent = this.getIntent();
-        Bundle bundle = intent.getExtras();
-        Movie movie = (Movie) bundle.getSerializable("value");
-        button = (ImageButton)findViewById(R.id.button);
-        description=(TextView)findViewById(R.id.text_description);
-        afisha = (ImageView)findViewById(R.id.image_for_afisha);
-        video = (VideoView)findViewById(R.id.surface_view);
+        Movie movie = (Movie) intent.getSerializableExtra("value");
+        button = (ImageButton) findViewById(R.id.button);
+        afisha = (ImageView) findViewById(R.id.image_for_afisha);
+        video = (VideoView) findViewById(R.id.surface_view);
+        description = (TextView)findViewById(R.id.text_description);
         pathUrl = movie.getTrailer();
-        Log.e("VITAMIO",pathUrl);
+        Log.e("VITAMIO", pathUrl);
         if (!movie.getImageUrl().isEmpty())
-        Picasso.with(this).load(movie.getImageUrl()).into(afisha);
+            Picasso.with(this).load(movie.getImageUrl()).into(afisha);
         if (!movie.getDescription().isEmpty())
-        description.setText(movie.getDescription());
+            description.setText(movie.getDescription());
         if (!LibsChecker.checkVitamioLibs(this))
             return;
 
 
-
-
     }
+
     public void playVideo(View view)
+
+    //TODO remove videoview if trailer is not exist
     {
 
-        if (pathUrl==null) {
+        if (pathUrl == null) {
             Toast.makeText(this, "У этого фильма не трейлера", Toast.LENGTH_LONG).show();
 
         } else {

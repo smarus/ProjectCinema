@@ -1,60 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context="com.example.ruslan.projectcinema.activities.CinemaActivity"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.example.ruslan.projectcinema.activities.CinemaActivity">
+    <include layout="@layout/toolbar2"
+        ></include>
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Алатоо"
-        android:id="@+id/btn_alatoo"
-        android:onClick="onClick"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Манас"
         android:id="@+id/btn_manas"
-        android:onClick="onClick"/>
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Космопарк"
+        android:layout_weight="1"
+        android:background="@drawable/manas"
+        android:onClick="onClick" />
+    <Button
+        android:id="@+id/btn_alatoo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/alatoo"
+        android:onClick="onClick"
+        android:layout_weight="1"
+        />
+    <Button
         android:id="@+id/btn_cosmo"
-        android:onClick="onClick"/>
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Бишкек парк"
-        android:id="@+id/btn_bishpark"
-        android:onClick="onClick"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Октябрь"
-        android:id="@+id/btn_okt"
-        android:onClick="onClick"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Vefa"
-        android:id="@+id/btn_vefa"
-        android:onClick="onClick"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Россия"
-        android:id="@+id/btn_russia"
-        android:onClick="onClick"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Кыргыз киносу"
-        android:id="@+id/btn_kyrgyz"
-        android:onClick="onClick"/>
+        android:layout_weight="1"
+        android:background="@drawable/cosmo"
+        android:onClick="onClick" />
 
+    <Button
+        android:id="@+id/btn_bishpark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="onClick"
+        android:background="@drawable/bishkek" />
+
+    <Button
+        android:id="@+id/btn_okt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="onClick"
+        android:background="@drawable/oktabr" />
+
+    <Button
+        android:id="@+id/btn_vefa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="onClick"
+        android:background="@drawable/vefa" />
+
+    <Button
+        android:id="@+id/btn_russia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="onClick"
+        android:background="@drawable/rossia"/>
+    <Button
+        android:id="@+id/btn_kyrgyz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="onClick"
+        android:background="@drawable/kyrgyz" />
 
 
 </LinearLayout>

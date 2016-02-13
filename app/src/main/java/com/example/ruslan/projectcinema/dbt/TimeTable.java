@@ -12,16 +12,20 @@ public class TimeTable implements Serializable {
     private String theatre;
     private String date;
     private String price;
+    private String codeid;
 
-    public TimeTable( String hall, String movie_title, String theatre, String date, String price) {
+    public TimeTable( String hall, String movie_title, String theatre, String date, String price,String codeid) {
         this.hall = hall;
         this.movie_title = movie_title;
         this.theatre = theatre;
         this.date = date;
         this.price = price;
+        this.codeid = codeid;
     }
 
-
+    public String getCodeid() {
+        return codeid;
+    }
 
     public void setId(int id) {
         this.id = id;

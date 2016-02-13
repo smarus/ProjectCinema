@@ -17,7 +17,7 @@ public class DbTimeHelper extends SQLiteOpenHelper {
     public static final  String COL_THEATRE= "theatre";
     public static final  String COL_DATE = "date";
     public static final  String COL_PRICE = "price";
-    public static final  String COL_MOVIE = "movie";
+    public static final  String COL_MOVIEID = "movie";
     public DbTimeHelper(Context context)
     {
         super(context, Dbname, null, 1);
@@ -36,7 +36,7 @@ public class DbTimeHelper extends SQLiteOpenHelper {
                 COL_THEATRE+ " TEXT," +
                 COL_HALL + " TEXT," +
                 COL_DATE + " TEXT,"+
-                COL_MOVIE +" TEXT,"+
+                COL_MOVIEID +" TEXT,"+
                 COL_PRICE + " TEXT);";
         db.execSQL(sql);
     }
