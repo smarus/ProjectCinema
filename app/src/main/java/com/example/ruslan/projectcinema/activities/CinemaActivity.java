@@ -25,7 +25,7 @@ public class CinemaActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_alatoo: {
                 intent = new Intent(getApplicationContext(), LisTimeActivity.class);
-                intent.putExtra("title", "алатоо");
+                intent.putExtra("title", "ала-тоо");
                 startActivity(intent);
                 break;
             }

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.ruslan.projectcinema.activities.LisTimeActivity;
 
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.e("DATE", format.format(datefrom));
         dbHelper = new DbHelper(this);
+        ContextWrapper contextWrapper = new ContextWrapper(this);
         dbTimeHelper = new DbTimeHelper(this);
         button = (Button) findViewById(R.id.btn_cinema);
         button.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +81,11 @@ public class MainActivity extends AppCompatActivity {
         setDisplay();
 
         if (ConnectInet() && TimeMIls()) {
+            contextWrapper.deleteDatabase(DbHelper.Dbname);
+            contextWrapper.deleteDatabase(DbTimeHelper.Dbname);
         update();
+
+
         } else {
             showWithoutInternet();
         }
@@ -91,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences spref = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor pref = spref.edit();
         long currentTime = System.currentTimeMillis();
+        Log.e("currenttime",currentTime+"");
         long previousTime = spref.getLong("time", 0);
         if (currentTime - previousTime > TimeUnit.DAYS.toMillis(1)) {
             pref.putLong("time", currentTime);
