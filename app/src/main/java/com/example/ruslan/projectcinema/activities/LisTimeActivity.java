@@ -135,7 +135,7 @@ public class LisTimeActivity extends AppCompatActivity {
                     date = datefrom.getTime() + (24 * 60 * 60 * 1000 * 2);
                     break;
             }
-            return format.format(date)+theatre;
+            return format.format(date)+"   "+theatre.toUpperCase();
         }
     }
 }
