@@ -54,7 +54,6 @@ public class TrailerActivity extends AppCompatActivity {
         Log.e("VITAMIO", pathUrl);
         if (!movie.getImageUrl().isEmpty()) {
             Picasso.with(this).load(movie.getImageUrl()).into(afisha);
-
         }
         if (!movie.getDescription().isEmpty()) {
             final ViewTreeObserver vto = afisha.getViewTreeObserver();
@@ -106,14 +105,11 @@ public void makeSpan()
     String plainText=movie.getDescription();
     Spanned htmlText = Html.fromHtml(plainText);
     SpannableString mSpannableString= new SpannableString(htmlText);
-
     int allTextStart = 0;
     int allTextEnd = htmlText.length() - 1;
-
     int lines;
     Rect bounds = new Rect();
     description.getPaint().getTextBounds(plainText.substring(0,10), 0, 1, bounds);
-    //float textLineHeight = mTextView.getPaint().getTextSize();
     float fontSpacing=description.getPaint().getFontSpacing();
     lines = (int) (finalHeight/(fontSpacing));
     MyLeadingMarginSpan2 span = new MyLeadingMarginSpan2(lines, finalWidth +10 );
