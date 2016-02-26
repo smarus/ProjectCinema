@@ -10,9 +10,6 @@ import android.widget.TextView;
 import com.example.ruslan.projectcinema.R;
 import com.example.ruslan.projectcinema.dbt.TimeTable;
 import com.example.ruslan.projectcinema.dbt.TimetableHelper;
-import com.romainpiel.shimmer.Shimmer;
-import com.romainpiel.shimmer.ShimmerTextView;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -72,6 +69,5 @@ public class AdapterForList extends BaseAdapter {
 
     public class Holder {
         TextView text_price, text_title, text_theatre, text_time, text_film;
-        ShimmerTextView textView;
     }
 }

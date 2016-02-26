@@ -40,19 +40,27 @@
         android:layout_weight="1"
         android:background="#070213"
         android:weightSum="1">
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="188dp"
-            android:layout_weight="0.50"
-            android:id="@+id/image_for_afisha"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <RelativeLayout
+              android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+            android:padding="5dp">
 
         <TextView
-            android:layout_width="50dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Описания нет"
+            android:text="@string/description"
             android:textColor="#FFFF"
             android:id="@+id/text_description"
-            android:layout_weight="0.50" />
+            />
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/image_for_afisha"/>
+        </RelativeLayout>
+         </ScrollView>
     </LinearLayout>
 
 
