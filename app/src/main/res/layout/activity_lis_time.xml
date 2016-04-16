@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.example.ruslan.projectcinema.activities.LisTimeActivity">
+    android:orientation="vertical"
+    tools:context="com.sunrise.cinema.activities.LisTimeActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager_for_fragment"
@@ -18,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:background="#c015134e">
+            android:background="@color/colorPrimary">
         </android.support.v4.view.PagerTabStrip>
 
     </android.support.v4.view.ViewPager>

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ruslan.projectcinema" >
+    package="com.sunrise.cinema" >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.sunrise.cinema.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.TrailerActivity"
+            android:name="com.sunrise.cinema.activities.TrailerActivity"
             android:label="@string/title_activity_trailer"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
@@ -35,13 +35,13 @@
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity
-            android:name=".activities.CinemaActivity"
+            android:name="com.sunrise.cinema.activities.CinemaActivity"
             android:label="@string/title_activity_cinema"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".activities.LisTimeActivity"
+            android:name="com.sunrise.cinema.activities.LisTimeActivity"
             android:label="@string/title_activity_lis_time"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >

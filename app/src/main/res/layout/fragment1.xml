@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <include
-        layout="@layout/toolbar_for_timetable">
-    </include>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listview"
-        style="@style/CustomListView"
-        android:background="@drawable/gradient">
+        style="@style/CustomListView">
     </ListView>
+    <ImageView
+        android:layout_width="3dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/bg_head"
+        android:contentDescription="@drawable/ic_launcher" />
 </RelativeLayout>

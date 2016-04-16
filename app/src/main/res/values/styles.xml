@@ -7,17 +7,39 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="CustomListView" parent="@android:style/Widget.ListView">
+        <item name="android:background">#c8cfe2</item>
+        <item name="android:fastScrollEnabled">true</item>
+    </style>
 
-<style name="CustomListView" parent="@android:style/Widget.ListView">
-    <item name="android:background">#c8cfe2</item>
-    <item name="android:fastScrollEnabled">true</item>
-</style>
+    <style name="CinemaListNumStyle" parent="CinemaListStyle">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:layout_marginTop">10sp</item>
+        <item name="android:layout_marginRight">10sp</item>
+        <item name="android:layout_marginLeft">10sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
+    <style name="CinemaListTitleStyle" parent="CinemaListStyle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_marginTop">8sp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CinemaListStyle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">10dp</item>
+    </style>
 </resources>

@@ -1,8 +1,18 @@
 <resources>
-    <string name="app_name">ProjectCinema</string>
+    <string name="app_name">Киноафиша</string>
+    <string name="cinema">Кинотеатры</string>
+    <string name="alatoo">АЛА-ТОО</string>
+    <string name="bishkekpark">БИШКЕКПАРК</string>
+    <string name="vefa">ВЕФА</string>
+    <string name="kosmopark">КОСМОПАРК</string>
+    <string name="kyrgys">КЫРГЫЗ КИНОСУ</string>
+    <string name="manas">МАНАС</string>
+    <string name="oktabr">ОКТЯБРЬ</string>
+    <string name="rossia">РОССИЯ</string>
     <string name="action_settings">Settings</string>
+    <string name="description">Описание</string>
+    <string name="about">О фильме</string>
     <string name="title_activity_trailer">TrailerActivity</string>
     <string name="title_activity_cinema">CinemaActivity</string>
     <string name="title_activity_lis_time">LisTimeActivity</string>
-    <string name="description">Описания нет</string>
 </resources>

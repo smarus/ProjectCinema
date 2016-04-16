@@ -1,75 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.example.ruslan.projectcinema.activities.CinemaActivity">
-    <include layout="@layout/toolbar2"
-        ></include>
-    <Button
-        android:id="@+id/btn_manas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@drawable/manas"
-        android:onClick="onClick" />
-    <Button
+    tools:context="com.sunrise.cinema.activities.CinemaActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <RelativeLayout
         android:id="@+id/btn_alatoo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/alatoo"
+        android:clickable="true"
         android:onClick="onClick"
         android:layout_weight="1"
-        />
-    <Button
-        android:id="@+id/btn_cosmo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@drawable/cosmo"
-        android:onClick="onClick" />
+        android:background="@color/color1">
 
-    <Button
+        <TextView
+            android:id="@+id/first"
+            style="@style/CinemaListNumStyle"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color1"
+            android:layout_height="match_parent"
+            android:text="  1  " />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/CinemaListTitleStyle"
+            android:layout_toEndOf="@+id/first"
+            android:layout_toRightOf="@+id/first"
+            android:text="@string/alatoo" />
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/gradient3" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/btn_bishpark"
         android:layout_width="match_parent"
+        android:onClick="onClick"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:onClick="onClick"
-        android:background="@drawable/bishkek" />
+        android:background="@color/color2">
 
-    <Button
+        <TextView
+            android:id="@+id/second"
+            style="@style/CinemaListNumStyle"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color2"
+            android:layout_height="match_parent"
+            android:text="  2  " />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/CinemaListTitleStyle"
+            android:layout_toEndOf="@+id/second"
+            android:layout_toRightOf="@+id/second"
+            android:text="@string/bishkekpark" />
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/gradient3" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_vefa"
+        android:layout_width="match_parent"
+        android:onClick="onClick"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/color3">
+
+        <TextView
+            android:id="@+id/third"
+            style="@style/CinemaListNumStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/color3"
+            android:text="  3  " />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/CinemaListTitleStyle"
+            android:layout_toEndOf="@+id/third"
+            android:layout_toRightOf="@+id/third"
+            android:text="@string/vefa" />
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/gradient3" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_cosmo"
+        android:layout_width="match_parent"
+        android:onClick="onClick"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/color4">
+
+        <TextView
+            android:id="@+id/fourth"
+            style="@style/CinemaListNumStyle"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color4"
+            android:layout_height="match_parent"
+            android:text="  4  " />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/CinemaListTitleStyle"
+            android:layout_toEndOf="@+id/fourth"
+            android:layout_toRightOf="@+id/fourth"
+            android:text="@string/kosmopark" />
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/gradient3" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_kyrgyz"
+        android:layout_width="match_parent"
+        android:onClick="onClick"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/color5">
+
+        <TextView
+            android:id="@+id/fifth"
+            style="@style/CinemaListNumStyle"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color5"
+            android:layout_height="match_parent"
+            android:text="  5  " />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/CinemaListTitleStyle"
+            android:layout_toEndOf="@+id/fifth"
+            android:layout_toRightOf="@+id/fifth"
+            android:text="@string/kyrgys" />
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/gradient3" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_manas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:layout_weight="1"
+        android:background="@color/color6">
+
+        <TextView
+            android:id="@+id/sixth"
+            style="@style/CinemaListNumStyle"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color6"
+            android:layout_height="match_parent"
+            android:text="  6  " />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/CinemaListTitleStyle"
+            android:layout_toEndOf="@+id/sixth"
+            android:layout_toRightOf="@+id/sixth"
+            android:text="@string/manas" />
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/gradient3" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/btn_okt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:onClick="onClick"
-        android:background="@drawable/oktabr" />
-
-    <Button
-        android:id="@+id/btn_vefa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:onClick="onClick"
-        android:background="@drawable/vefa" />
+        android:background="@color/color7">
 
-    <Button
+        <TextView
+            android:id="@+id/seventh"
+            style="@style/CinemaListNumStyle"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color7"
+            android:layout_height="match_parent"
+            android:text="  7  " />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/CinemaListTitleStyle"
+            android:layout_toEndOf="@+id/seventh"
+            android:layout_toRightOf="@+id/seventh"
+            android:text="@string/oktabr" />
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/gradient3" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/btn_russia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:onClick="onClick"
-        android:background="@drawable/rossia"/>
-    <Button
-        android:id="@+id/btn_kyrgyz"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:onClick="onClick"
-        android:background="@drawable/kyrgyz" />
+        android:background="@color/color8">
+
+        <TextView
+            android:id="@+id/eighth"
+            style="@style/CinemaListNumStyle"
+            android:textColor="@color/color8"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="  8  " />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/CinemaListTitleStyle"
+            android:layout_toEndOf="@+id/eighth"
+            android:layout_toRightOf="@+id/eighth"
+            android:text="@string/rossia" />
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/gradient3" />
+    </RelativeLayout>
 
 
 </LinearLayout>

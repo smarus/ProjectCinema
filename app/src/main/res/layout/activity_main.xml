@@ -1,60 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context=".MainActivity"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/mainback"
-    android:orientation="vertical">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.sunrise.cinema.MainActivity">
+
     <include
-        layout="@layout/toolbar">
-    </include>
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"></include>
 
     <LinearLayout
+        android:id="@+id/up_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/up_line"
         android:background="#0a0909"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
+
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </android.support.v4.view.ViewPager>
+            android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/down_line"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/down_line"
         android:orientation="vertical"
         android:visibility="gone">
+
         <Button
             android:id="@+id/btn_cinema"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@drawable/cinema"/>
+            android:background="@drawable/cinema" />
+
         <android.support.v4.view.ViewPager
             android:id="@+id/pager2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </android.support.v4.view.ViewPager>
+            android:layout_height="match_parent"/>
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/liner_for_progress"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/liner_for_progress"
         android:background="@drawable/back"
         android:orientation="vertical">
+
         <ProgressBar
-            android:layout_gravity="center"
-            android:indeterminateDrawable="@drawable/image"
             android:layout_width="50dp"
-            android:layout_height="550dp"
-            />
+            android:layout_height="50dp"
+            android:layout_gravity="center" />
     </LinearLayout>
 
 
